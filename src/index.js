@@ -15,6 +15,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
 //sagaの実行。applyMiddlewareフェーズの後でのみSagasを実行するために使用できます。
+//watchとあるように、常駐させておくイメージ？
 sagaMiddleware.run(watchAgeUp);
 
 ReactDOM.render(
