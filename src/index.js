@@ -9,10 +9,14 @@ import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { watchAgeUp } from "./sagas/saga";
 
+//sagaを使う準備
 const sagaMiddleware = createSagaMiddleware();
+//storeにsagaMiddlewareを追加
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
+//sagaの実行。applyMiddlewareフェーズの後でのみSagasを実行するために使用できます。
 sagaMiddleware.run(watchAgeUp);
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
